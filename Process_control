@@ -1,0 +1,41 @@
+/*
+流程控制
+2021/11/18
+曹忠伟
+*/
+
+# 流程控制，使用if函数，生成特定字段
+SELECT Name,
+Population,
+GNP,
+IF(Population>100000000,"人口大国","其他国家") AS 国家分类
+
+FROM country
+
+ORDER BY Population DESC
+
+LIMIT 30;
+
+
+# CASE函数
+SELECT Name,
+GNP,
+Population,
+
+CASE
+	WHEN Population>100000000 THEN "人口超级大国"
+	
+	WHEN Population<100000000 AND Population>50000000 THEN "人口较大国"
+	
+	WHEN Population<50000000 AND Population>10000000 THEN "人口中等国"
+	
+	ELSE "人口较少国"
+
+	END AS 国家类型
+
+FROM
+	country
+	
+ORDER BY Population DESC
+
+LIMIT 100
